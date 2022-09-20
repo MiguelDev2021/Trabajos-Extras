@@ -15,8 +15,7 @@ void numeromagico();
 void tablasmultiplicar();
 void funcionesvectores();
 void vectores();
-void cargarvector();
-void mostrarvector();
+
 
 int main() {
 
@@ -46,7 +45,7 @@ int menu(){
 
     //tomamos la elecion del usuario y lo guardamos en la variable opcion
     cin >> opcion; 
-   return funciones(opcion);
+    return funciones(opcion);
 
 
 }
@@ -59,18 +58,19 @@ int funciones(int opcion){
         numeromagico(); // llamamos la funcion de numero magico
         break;
      case 2:
-        tablasmultiplicar();
+        tablasmultiplicar(); //si el usuario marca 2 llama a la funcion tablas de multiplicar
         break;
     case 3:
-        vectores();
+        vectores(); ////si el usuario marca 3 llama a la funcion vectores
         break;
-     case 4:
+     case 4: //si el usuario marca 4 finaliza el programa
         cent = 1;
         cout << "----------------HA SIDO UN GUSTO NOS VEMOS LUEGO ;) --------------------\n";
         cout << "Creador Por: ";
 
         break;
-    default: 
+    default: // si el usuario marca un numero que no esta en el mundo se le advierte diciendo que 
+            // la opcion es incorrecta
         cout << "la opcion insertada es incorrecta\n\n";
     }
     return cent;
@@ -117,32 +117,36 @@ int funciones(int opcion){
 
 
 
-
+    // con este while se genera un numero que este en el rango 
+    // que el usuario digito.
     while (numeroGenerado <= numeroMenor){
         srand(time(NULL));
         numeroGenerado =  rand() % numeroMayor + 1 ;
 
     }
 
-
+    //iniciamos el juego con este while, ya que el usuario no adivine no finalizara    
     while (numeroDigitado !=  numeroGenerado){
      //se asigna el numero digitado a la variable numeroDigitado
      cin >> numeroDigitado ;   
 
-     
+     // validamos si el numero digitado es menor al numero magico y se lo decimos al usuario
      if (numeroDigitado < numeroGenerado){
         cout << "el numero digitado es menor al numero magico\n";
+     // validamos si el numero digitado es mayo al numero magico y se lo decimos al usuario   
      }else if ( numeroDigitado > numeroGenerado){
         cout << "el numero digitado es mayor al numero magico\n";
+     // cuando el usuario ha adivinado se felicita y se muestra el numero de intentos con la linea 143   
      }else{
          cout << "Eres un genio adivinaste el numero\n";
-         cout << "Tu numeros de intentos:\n ";
+         cout << "Tu numeros de intentos: ";
          cout << intentos;
+         cout << "\n";
 
          
      }
 
-        intentos = intentos + 1 ;
+        intentos = intentos + 1 ; // cada vez que no adivine el usuario los intentos aumentaran.
 
      }
      
@@ -158,8 +162,7 @@ int funciones(int opcion){
 //creamos las tablas de multiplicar
 void tablasmultiplicar(){
 
-    int tablademultiplicar;
-    int paroImpar;
+    int tablademultiplicar;// se declara la variable para saber que tabla quiere.
     int i; // declaramos la i para los ciclos for
 
     //saludamos las tablas multiplicar
@@ -173,7 +176,7 @@ void tablasmultiplicar(){
 
      
        
-    if(tablademultiplicar % 2 == 0 ){
+    if(tablademultiplicar % 2 == 0 ){ // si la tabla de multiplicar es par se muestra del 1 al 10
         for(i= 1; i <= 10; i++){
            int resultado = i * tablademultiplicar;
 
@@ -184,9 +187,8 @@ void tablasmultiplicar(){
            cout << resultado;  
            cout << "\n";
         }
-
-    }else{
-         for(i= 10; i > 0; i--){
+    }else{ // de lo contrario si la tabla de multiplicar es impar se muestra del 10 al 1
+         for(i= 10; i > 0; i--){ // se utiliza el for para debida aplicacion de la tablas de mutiplicar.
            int resultado = i * tablademultiplicar;
 
            cout << tablademultiplicar ;
@@ -211,7 +213,7 @@ void vectores(){
 
 
 void funcionesvectores(){
-    vector <int> numeros;
+    vector <int> numeros; // se declara el vector de tipo numeros enteros
     int numero;
     int salir = 0;
     int opcion;
@@ -219,26 +221,30 @@ void funcionesvectores(){
     // el submenu de vectores hasta que el usuario se quede.
 
 
-    while(salir != 1){ 
+    while(salir != 1){  // mientras que salir sea difirente a uno se ejecute el menu y todos lo procesos de 
+                        // los vectores.
     
+
+    // se muestra el menu de los vectores
     cout << "-------MENU DE OPCIONES DE VECTORES-------\n";
     cout << "1.INICIALIZAR\n";
     cout << "2.CARGAR\n";   
     cout << "3.MOSTRAR\n";
     cout << "4.salir\n";
 
-    cin >> opcion; 
+    //tomamos la eleccion del usuario.
+    cin >> opcion;  
 
 
     switch (opcion)
     {
-    case 1 : //si el usuario marca uno ingresamos a la opcion de numero magico
+    case 1 : //si el usuario marca se inicia el proceso de inicializacion del vector
         cout<<"digita un numero para inicilizar el vector\n";
         cin >> numero;
-        for(int i=0 ;  i<=3; i++){
+        for(int i=0 ;  i<=3; i++){ // se hace por tres veces 
         numeros.push_back(numero);
         }
-        
+        // se muestra el contenido de mi vector.
         cout << "( ";
         for(int i = 1; i < numeros.size(); i++){
             
@@ -249,7 +255,8 @@ void funcionesvectores(){
 
         break;
      case 2:
-
+        // con el if verificamos si el vectr ya fue inicializado y si no le avisa al usuario
+        // la expresion nos dice si el vector tiene datos continue si no avisele al usario
         if(numeros.size() != 0){
             //ELIMINAMOS TODOS LO OBJETOS DEL VECTOR PARA VOLVER ASIGNARLOS
             while(numeros.size() != 0){
@@ -270,7 +277,7 @@ void funcionesvectores(){
                 numeros.push_back(numeroTomado);
 
             }
-
+            // se muestra el vector despues de haberle asignado valores
             cout << "EL VAECTOR HA QUEDADO DE LA SIGUIENTE MANERA";
             cout << " (";
             for(int i = 0; i < numeros.size(); i++){
@@ -292,6 +299,8 @@ void funcionesvectores(){
             
              cout << "-----TU VECTOR CREADO-----\n";
             cout << "( ";
+
+            //se muestra los datos que contiene el vector.
             for(int i = 0; i < numeros.size(); i++){
                 
                 cout << numeros[i];
@@ -305,7 +314,7 @@ void funcionesvectores(){
 
         break;
      case 4:
-      salir = 1;
+      salir = 1; // se utiliza para salir del submenu y volver al menu principal.
         break;
     default: 
         cout << "la opcion insertada es incorrecta\n\n";
