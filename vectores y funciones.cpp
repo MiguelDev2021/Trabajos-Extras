@@ -8,7 +8,7 @@
 
 
 using namespace std;
-
+// Declaraciones de las funciones a utilizar en el programa.
 int menu();
 int funciones(int);
 void numeromagico();
@@ -19,13 +19,13 @@ void vectores();
 
 int main() {
 
-    //el programa se ejecuta hasta que la centinela cambie a 1.
-    int cent = 0;
-    while (cent != 1)
+    //el programa se ejecuta hasta que la bandera cambie a 1.
+    int bandera = 0;
+    while (bandera != 1)
     {
         //funcion mostrar panel principal de opciones y ademas esperar el valor de centinela para finalizar 
         // el programa
-       cent =  menu();
+       bandera =  menu();
     }
     
     return 0;
@@ -51,7 +51,7 @@ int menu(){
 }
 
 int funciones(int opcion){
-    int cent;
+    int bandera;
     switch (opcion)
     {
     case 1 : //si el usuario marca uno ingresamos a la opcion de numero magico
@@ -64,16 +64,16 @@ int funciones(int opcion){
         vectores(); ////si el usuario marca 3 llama a la funcion vectores
         break;
      case 4: //si el usuario marca 4 finaliza el programa
-        cent = 1;
+        bandera = 1;
         cout << "----------------HA SIDO UN GUSTO NOS VEMOS LUEGO ;) --------------------\n";
-        cout << "Creador Por: ";
+        cout << "Creador Por: Edinson Aux ";
 
         break;
     default: // si el usuario marca un numero que no esta en el mundo se le advierte diciendo que 
             // la opcion es incorrecta
         cout << "la opcion insertada es incorrecta\n\n";
     }
-    return cent;
+    return bandera;
 
 }
 
@@ -83,7 +83,7 @@ int funciones(int opcion){
     int numeroMayor;
     int numeroDigitado;
     int numeroGenerado = 0;// se inicia en cero por que el usuario puede escribir el cero como numero menor
-    int burbuja;
+    int numero;
     int intentos = 1;  // se coloca esta vaiable para saber cuantos intentos se logro
 
     // se le da la bienvenida al usuario al juego del numero magico
@@ -98,11 +98,11 @@ int funciones(int opcion){
     cin >> numeroMayor; //se asigna el valor digitado por al usuario a la variable numero mayor
 
     //se verifica que el numero que se digita como menor sea verdadero 
-    //si esto resulta falso se realiza el metodo burbuja
+    //si esto resulta falso organizamos los numeros con la variable auxiliar nume
     if (numeroMayor < numeroMenor){
-        burbuja = numeroMenor;
+        numero = numeroMenor;
         numeroMenor = numeroMayor;
-        numeroMayor = burbuja;
+        numeroMayor = numero;
 
     }
 
@@ -248,7 +248,7 @@ void funcionesvectores(){
         cout << "( ";
         for(int i = 1; i < numeros.size(); i++){
             
-            cout << numeros[i];
+            cout << numeros[i];// toma el valor de la posicion
             cout<< ",";
         }
          cout << ")\n";
